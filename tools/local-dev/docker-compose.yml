@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: interview-mysql
+    volumes:
+      - ../../conf/DB:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=interview
+      - MYSQL_PASSWORD=interview
+      - MYSQL_DATABASE=musicdb
+  app:
+    build: ./app
+    container_name: interview-api
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
+    volumes:
+      - ../../api:/opt/interview/api
+      - ../../conf:/opt/interview/conf

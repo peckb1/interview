@@ -1,0 +1,26 @@
+mySqlHost: ${MYSQL_HOST}
+mySqlPort: ${MYSQL_PORT}
+databaseName: ${DATABASE_NAME}
+databaseUsername: ${DATABASE_USERNAME}
+databasePassword: ${DATABASE_PASSWORD}
+
+#-----------------------------------------------------------------------------
+# dropwizard config
+
+logging:
+  # This will apply a log level for items not specified explicitly in the `loggers` block
+  level: INFO
+  loggers:
+    "com.github.peckb1": ${LOG_LEVEL}
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
