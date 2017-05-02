@@ -82,3 +82,37 @@ python redeploy.py
 
 Entry point for loading the configuration details, creating and
 registering any REST endpoint
+
+### Example Queries
+
+```
+curl -v -X POST localhost:8080/group -H 'Content-Type: application/json' -d '{
+    "groupName": "Foo Fighters",
+    "yearFormed": 1994,
+    "currentMembers": [
+        "Dave Grohl",
+        "Nate Mendel",
+        "Pat Smear",
+        "Taylor Hawkins",
+        "Chris Sheflett"
+    ],
+    "pastMembers": [
+        "William Goldsmith",
+        "Franz Stahl"
+    ]
+}'
+
+curl -v -X GET localhost:8080/group/Rm9vIEZpZ2h0ZXJz
+
+curl -v -X POST localhost:8080/album -H 'Content-Type: application/json' -d '{
+    "artistName" : "Foo Fighters",
+    "albumName" : "The Colour and the Shape",
+    "releaseYear" : 1997
+}'
+
+curl -v -X GET localhost:8080/album/VGhlIENvbG91ciBhbmQgdGhlIFNoYXBl
+
+curl -v -X GET localhost:8080/music
+
+curl -v -X GET localhost:8080/music?group=Rm9vIEZpZ2h0ZXJz
+```
