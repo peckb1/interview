@@ -73,7 +73,7 @@ docker-compose up
 
 ```bash
 cd tools\local-dev
-python redeploy.py
+python3 redeploy.py
 ```
 
 ### Entry Point
